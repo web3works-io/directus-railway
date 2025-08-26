@@ -10,7 +10,6 @@ USER root
 RUN npm install -g pnpm --force
 
 USER node
-RUN apk add --no-cache vim jq curl bash
 # Installing contributed/custom extensions through npm on Railway
 RUN pnpm install directus-extension-computed-interface && pnpm install directus-extension-upsert && \
 pnpm install directus-extension-wpslug-interface && pnpm install pg && \
