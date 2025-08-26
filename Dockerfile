@@ -10,7 +10,7 @@ USER root
 RUN npm install -g pnpm --force
 
 USER node
-
+RUN apk add --no-cache vim jq curl bash
 # Installing contributed/custom extensions through npm on Railway
 RUN pnpm install directus-extension-computed-interface && pnpm install directus-extension-upsert && \
 pnpm install directus-extension-wpslug-interface && pnpm install pg && \
@@ -18,7 +18,9 @@ pnpm install directus-extension-flexible-editor && pnpm install @directus-labs/s
 pnpm install @directus-labs/migration-bundle && \
 pnpm install directus-extension-sync && \
 pnpm install @directus-labs/super-header-interface
-
+RUN pnpm add axios
+RUN pnpm add dotenv
+RUN pnpm add @directus/sdk
 # Migrations and Directus schema update
 RUN npx directus bootstrap
 # Copying the extensions, templates, migrations, and snapshots to the Directus container
